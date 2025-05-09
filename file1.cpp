@@ -35,6 +35,9 @@ public:
                 cout << "\nDuplikasi noMhs tidak diijinkan\n";
                 return;
             }
+            nodeBaru->next = START;
+            START = nodeBaru;
+            return;
 
             Node *previous = START;
             Node *current = START;
@@ -126,3 +129,71 @@ int main()
         cout << "Masukkan pilihan (1-5): ";
         cin >> ch;
         switch (ch)
+        {
+            case '1':
+            {
+                mhs.addNode();
+                break;
+            }
+            case '2':
+            {
+                if (mhs.listEmpty())
+                {
+                    cout << endl;
+                    cout << "List Kosong" << endl;
+                    break;
+                }
+    
+                cout << endl;
+                cout << "\nMadukkan no mahasiswa yang akan di hapus : ";
+                cin >> nim;
+                if (mhs.delNode(nim) == false)
+                    cout << endl
+                         << "Data tidak ditemukan" << endl;
+                else
+                    cout << endl
+                        << "Data dengan nomor mahasiswa" << nim << "berhasil dihapus" << endl;
+            }
+            break;
+            case '3':
+            {
+                mhs.traverse();
+            }
+            break;
+    
+            case '4':
+            {
+                if (mhs.listEmpty() == true)
+                {
+                    cout << "\nList Kosong\n";
+                    break;
+                }
+                Node *previous, *current;
+                cout << endl;
+                cout << "Masukkan no mahasiswa yang dicari : ";
+                cin >> nim;
+                if (mhs.Search(nim, &previous, &current) == false)
+                    cout << endl
+                         << "Data tidak ditemukan" << endl;
+                else
+                {
+                    cout << endl
+                         << "Data tidak ditemukan" << endl;
+                    cout << "\nNo Mahasiswa : " << current->noMhs << endl;
+                    cout << "\n";
+                }
+            }
+    
+            break;
+            case '5':
+            {
+            }
+            break;
+            default:
+            {
+                cout << "Pilihan saLah !." << endl;
+            }
+            break;
+        }
+    } while (ch != '5');
+}
