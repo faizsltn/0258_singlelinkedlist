@@ -72,7 +72,7 @@ public:
 
         return (*current != NULL);
     }
-        
+
     bool delNode(int nim)
     {
         Node *current, *previous;
@@ -97,7 +97,7 @@ public:
         else
         {
             cout << "\nData didalam list adalah:\n";
-            Node*currentNode = START;
+            Node *currentNode = START;
             while (currentNode != NULL)
             {
                 cout << currentNode->noMhs << endl;
@@ -110,8 +110,19 @@ public:
 
 int main()
 {
-    LinkedList mhs;
+    SingleLinkedList mhs;
     int nim;
     char ch;
-    
-}
+
+    do
+    {
+        cout << "Menu" << endl;
+        cout << "1. Menambahkan data kedalam list" << endl;
+        cout << "2. Menghapus data dari dalam list" << endl;
+        cout << "3. Menampilkan semua data didalam list" << endl;
+        cout << "4. Mencari data dalam list" << endl;
+        cout << "5. Keluar" << endl;
+        cout << endl;
+        cout << "Masukkan pilihan (1-5): ";
+        cin >> ch;
+        switch (ch)
