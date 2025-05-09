@@ -4,7 +4,7 @@ using namespace std;
 
 class Node
 {
-    public :
+public:
     int noMhs;
     Node *next;
 };
@@ -13,7 +13,7 @@ class SingleLinkedList
 {
     Node *START;
 
-    public :
+public:
     SingleLinkedList()
     {
         START = NULL;
@@ -51,22 +51,40 @@ class SingleLinkedList
             }
 
             nodeBaru->next = current;
-            previous->next = nodeBaru;        
+            previous->next = nodeBaru;
         }
+    }
+    bool listEmpty()
+    {
+        return (START == NULL);
+    }
 
-        bool listEmpty()
-        {
-            return (START == NULL);
-        }
+    bool Search(int nim, Node **previous, Node **current)
+    {
+        *previous = *current;
+        *current = (*current)->next;
 
-        bool Search(int nim, Node **previous, Node **current)
+        while ((*current != NULL) && (nim != (*current)->noMhs))
         {
             *previous = *current;
             *current = (*current)->next;
         }
 
-        return(*current != NULL);
+        return (*current != NULL);
     }
+        
+    bool delNode(int nim)
+    {
+        Node *current, *previous;
+        if (!Search(nim, &previous, &current))
+            return false;
 
-    
+        if (current == START)
+            START = START->next;
+
+        else
+            previous->next = current->next;
+        delete current;
+        return true;
+    }
 };
